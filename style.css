@@ -34,9 +34,7 @@ body {
   left: 50%;
   font-family: "VCR", 'Courier New', Courier, monospace;
   text-align: center;
-  /* Negative half of height. */
   margin-left: -100px;
-  /* Negative half of width. */
 }
 
 #social ul {

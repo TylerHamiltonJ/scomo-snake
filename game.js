@@ -122,7 +122,7 @@ function draw() {
     if (gameState === "GAME_OVER") {
         const textHeight = 36;
         background(51);
-        image(gameOverScreen, 0, 0, width, height)
+        image(gameOverScreen, 0, height - width, width, width)
         fill('#ED225D');
         textAlign(CENTER)
         textFont(pixelFont);
@@ -136,10 +136,6 @@ function draw() {
         social.style.top = `${50 + (textHeight * 3)}px`
         social.style.display = "block";
         social.querySelector(".tweet").href = `https://twitter.com/intent/tweet?url=https%3A%2F%2Fflappyguy.com&text=I helped Scott Morrison steal ${record} portfolios%21&hashtags=ScomoSnake`
-
-        // let a = createA('http://p5js.org/', 'this is a link');
-        // a.position((width / 2), 50 + (textHeight * 3));
-        // console.log(a)
     }
 
 }
