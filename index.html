@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-5DK6X3Z");
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script language="javascript" type="text/javascript" src="library/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="library/addons/p5.sound.min.js"></script>
+  <script language="javascript" type="text/javascript" src="library/p5.dom.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="src/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="src/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="src/favicon-16x16.png" />
+  <link rel="manifest" href="src/site.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Scomo Snake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Place holder" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://Place holder.com" />
+  <meta property="og:title" content="Scomo Snake" />
+  <meta property="og:description" content="Place holder" />
+  <meta property="og:image" content="https://Place holder.com/src/banner.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://Place holder.com" />
+  <meta name="twitter:title" content="Scomo Snake" />
+  <meta name="twitter:description" content="Place holder" />
+  <meta name="twitter:image" content="https://Place holder.com/src/banner.jpg" />
+</head>
+
+<body>
+  <div id="p5_loading" class="loadingclass">
+    <img src="./src/loading-buffering.gif" />
+  </div>
+  <div id="game">
+    <div id="container" class="unselectable"></div>
+    <div id="controls" class="unselectable">
+      <div class="grid">
+        <!-- <div class="up">⬆️</div>
+        <div class="down">⬇️</div>
+        <div class="left">⬅️</div>
+        <div class="right">➡️</div>-->
+        <!-- <div class="up component"><span>UP</span></div> 
+        <div class="down component"><span>DOWN</span></div>
+        <div class="left component"><span>LEFT</span></div>
+        <div class="right component"><span>RIGHT</span></div> -->
+      </div>
+    </div>
+
+    <script language="javascript" type="text/javascript" src="game.js"></script>
+    <script src="snake.js"></script>
+
+</body>
+
+</html>

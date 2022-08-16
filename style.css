@@ -1,0 +1,65 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overscroll-behavior: contain;
+  overflow: hidden;
+}
+
+#game {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#controls {
+  width: auto;
+  margin: 0 auto;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.grid {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 5px;
+  grid-template-areas:
+    ". up ."
+    "left down right";
+}
+
+.grid>div {
+  background: blue;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.up {
+  grid-area: up;
+}
+
+.down {
+  grid-area: down;
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
