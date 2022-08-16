@@ -11,15 +11,15 @@ let tweet = document.getElementById("tweet");
 let donation = document.getElementById("donation");
 let started = false;
 let gameState = "START";
-let moveSpeed = 0.3;
+let moveSpeed = 0.35;
 let lastDirection = "right";
 let ministers;
 
 function preload() {
     faces.scottFace = loadImage('./img/scott.png');
     ministers = [
-        { title: "Minister of Finance", img: loadImage('./img/greg.png') },
-        { title: "Minister of Health", img: loadImage('./img/birmo.png') }
+        { title: "Minister of Health", img: loadImage('./img/greg.png') },
+        { title: "Minister of Finance", img: loadImage('./img/birmo.png') }
     ];
     gameOverScreen = loadImage('./img/sadscomo.png');
     swipeIcon = loadImage('./img/swipet.gif');
