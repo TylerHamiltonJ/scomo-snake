@@ -32,13 +32,15 @@ function preload() {
 // 3. Use key arrows to move snake
 
 var s;
-let gridSize = 8;
+let gridSize;
 let scl;
 var food;
 
 function setup() {
     const w = Math.min(1000, window.innerWidth);
-    const h = Math.ceil((window.innerHeight) / gridSize) * gridSize;;
+    gridSize = w < 1000 ? 8 : 15;
+    console.log(gridSize)
+    const h = Math.ceil((window.innerHeight) / gridSize) * gridSize;
     scl = w / gridSize;
     const cnv = createCanvas(w, h);
     cnv.parent("container");

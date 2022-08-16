@@ -1,7 +1,9 @@
+
+
 //function to create snake object, with location and speed
 function Snake() {
-    this.x = (width / 2) - scl;
-    this.y = (height / 2) - scl * 2;
+    this.x = Math.ceil(((width / 2) - scl) / gridSize) * gridSize;
+    this.y = Math.ceil(((height / 2) - scl * 2) / gridSize) * gridSize;
     this.xspeed = 0;
     this.yspeed = 0;
     this.total = 0; //to track the lenght of snake. If the snakes eat the food, total should go up to 1. total++
@@ -54,9 +56,8 @@ function Snake() {
         this.tail = [];
         gameoverSFX.play();
 
-
-        this.x = (width / 2) - scl;
-        this.y = (height / 2) - scl * 2;
+        this.x = Math.ceil(((width / 2) - scl) / gridSize) * gridSize;
+        this.y = Math.ceil(((height / 2) - scl * 2) / gridSize) * gridSize;
         this.xspeed = 0;
         this.yspeed = 0;
 
