@@ -18,7 +18,7 @@ function Snake() {
             navigator.vibrate(10);
             this.total += 1;
             this.lastPos = pos;
-            this.eatText.push({ text: "Minister of Health", opacity: 1, x: this.x, y: this.y });
+            this.eatText.push({ text: food.title, opacity: 1, x: this.x, y: this.y });
             return true;
         } else {
             return false;

@@ -11,12 +11,16 @@ let tweet = document.getElementById("tweet");
 let donation = document.getElementById("donation");
 let started = false;
 let gameState = "START";
-let moveSpeed = 0.4;
+let moveSpeed = 0.3;
 let lastDirection = "right";
+let ministers;
 
 function preload() {
     faces.scottFace = loadImage('./img/scott.png');
-    faces.gregFace = loadImage('./img/greg.png');
+    ministers = [
+        { title: "Minister of Finance", img: loadImage('./img/greg.png') },
+        { title: "Minister of Health", img: loadImage('./img/birmo.png') }
+    ];
     gameOverScreen = loadImage('./img/sadscomo.png');
     swipeIcon = loadImage('./img/swipet.gif');
     gameoverSFX = loadSound("./sfx/scomo.wav");
@@ -36,7 +40,6 @@ function setup() {
     const w = Math.min(1000, window.innerWidth);
     const h = Math.ceil((window.innerHeight) / gridSize) * gridSize;;
     scl = w / gridSize;
-    console.log({ w, h, scl })
     const cnv = createCanvas(w, h);
     cnv.parent("container");
     s = new Snake();
@@ -56,13 +59,17 @@ function changeState() {
 //function to store snake's location on the grid
 //floor calculates the closest int value that is less than or equal to the value of the parameter.
 function pickLocation() {
+    const ranArr = items => items[Math.floor(Math.random() * items.length)];
+
     var cols = floor(width / scl);
     var rows = floor(height / scl);
     const x = floor(random(cols));
     const y = floor(random(rows));
     food = createVector(x, y);//this ensure the food is in the grid aligned with snake
     food.mult(scl);//to expand it back out
-
+    const minister = ranArr(ministers);
+    food.img = minister.img;
+    food.title = minister.title;
 
 }
 
@@ -96,7 +103,7 @@ function draw() {
         s.show();
         //drawing snake food
         fill(255, 0, 100);
-        image(faces.gregFace, food.x, food.y, scl, scl);
+        image(food.img, food.x, food.y, scl, scl);
         noFill();
         rect(food.x, food.y, scl, scl);
     }
