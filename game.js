@@ -11,7 +11,7 @@ let tweet = document.getElementById("tweet");
 let donation = document.getElementById("donation");
 let started = false;
 let gameState = "START";
-let moveSpeed = 0.35;
+let moveSpeed = 1;
 let lastDirection = "right";
 let ministers;
 
@@ -32,7 +32,7 @@ function preload() {
 // 3. Use key arrows to move snake
 
 var s;
-let gridSize = 10;
+let gridSize = 8;
 let scl;
 var food;
 
@@ -43,7 +43,7 @@ function setup() {
     const cnv = createCanvas(w, h);
     cnv.parent("container");
     s = new Snake();
-    frameRate(30);
+    frameRate(10);
     food = createVector(random(width), random(height));
     pickLocation();
     // cnv.touchStarted(changeState); // attach 

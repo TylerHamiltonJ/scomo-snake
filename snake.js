@@ -40,7 +40,7 @@ function Snake() {
                 this.die();
             }
         }
-        if (this.x > width || this.y > height || this.x < 0 || this.y < 0) {
+        if (this.x >= width || this.y >= height || this.x < 0 || this.y < 0) {
             this.die();
         }
     }
