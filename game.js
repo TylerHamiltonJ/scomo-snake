@@ -92,7 +92,7 @@ function draw() {
         text('CLICK TO START!', (width / 2), 50);
         textSize(18);
         text('Help Scott Morrison secretly steal', (width / 2), 50 + (textHeight * 2));
-        text('as many portolios as possible.', (width / 2), 50 + (textHeight * 3));
+        text('as many portfolios as possible.', (width / 2), 50 + (textHeight * 3));
         text("Be careful not to get caught and", (width / 2), 50 + (textHeight * 4));
         text("trip over yourself!", (width / 2), 50 + (textHeight * 5));
         image(swipeIcon, (width - size) / 2, (height - size) / 2, size, size);
