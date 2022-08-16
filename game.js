@@ -1,14 +1,7 @@
 const ranArr = (arr) => arr[Math.floor(Math.random() * arr.length)];
-let ball;
 let img, lastScore, startImg;
-let imgs = {};
 let faces = {};
-let recordSpan = document.getElementById("record");
-let container = document.getElementById("container");
-let score = document.getElementById("score");
-let emot = document.getElementById("emot");
-let tweet = document.getElementById("tweet");
-let donation = document.getElementById("donation");
+const social = document.querySelector("#social");
 let started = false;
 let gameState = "START";
 let moveSpeed = 1;
@@ -19,9 +12,14 @@ function preload() {
     faces.scottFace = loadImage('./img/scott.png');
     ministers = [
         { title: "Minister of Health", img: loadImage('./img/greg.png') },
-        { title: "Minister of Finance", img: loadImage('./img/birmo.png') }
+        { title: "Minister of Finance", img: loadImage('./img/birmo.png') },
+        { title: "Minister of Home Affairs", img: loadImage('./img/andrews.png') },
+        { title: "Minister of Foreign Affairs", img: loadImage('./img/payne.png') },
+        { title: "Minister of Defence", img: loadImage('./img/dutton.png') },
+        { title: "Treasurer", img: loadImage('./img/fryd.png') }
     ];
     gameOverScreen = loadImage('./img/sadscomo.png');
+    collectSFX = loadSound('./sfx/collect.wav');
     swipeIcon = loadImage('./img/swipet.gif');
     gameoverSFX = loadSound("./sfx/scomo.wav");
     pixelFont = loadFont('assets/VCR.ttf');
@@ -45,14 +43,17 @@ function setup() {
     const cnv = createCanvas(w, h);
     cnv.parent("container");
     s = new Snake();
-    frameRate(10);
+    frameRate(9);
     food = createVector(random(width), random(height));
     pickLocation();
-    // cnv.touchStarted(changeState); // attach 
     cnv.mouseClicked(changeState);
 }
 
 function changeState() {
+    if (gameState === "GAME_OVER") {
+        gameState = "START";
+        return;
+    }
     if (gameState !== "PLAY") {
         gameState = "PLAY";
     }
@@ -79,6 +80,8 @@ function draw() {
     background(51);
     noStroke();
     if (gameState === "START") {
+        const textHeight = 30;
+        social.style.display = "none";
         const size = 50;
         background(51);
         fill('#ED225D');
@@ -86,8 +89,12 @@ function draw() {
         textSize(36);
         textAlign(CENTER);
         text('CLICK TO START!', (width / 2), 50);
-        image(swipeIcon, (width - size) / 2, (height - size) / 2, size, size);
         textSize(18);
+        text('Help Scott Morrison secretly steal', (width / 2), 50 + (textHeight * 2));
+        text('as many portolios as possible.', (width / 2), 50 + (textHeight * 3));
+        text("Be careful not to get caught and", (width / 2), 50 + (textHeight * 4));
+        text("trip over yourself!", (width / 2), 50 + (textHeight * 5));
+        image(swipeIcon, (width - size) / 2, (height - size) / 2, size, size);
         text('Swipe to move', (width / 2), height / 2 + size + 20);
         textAlign(LEFT);
         s.show();
@@ -112,18 +119,26 @@ function draw() {
 
 
     if (gameState === "GAME_OVER") {
-        const textHeight = 36
+        const textHeight = 36;
         background(51);
         image(gameOverScreen, 0, 0, width, height)
         fill('#ED225D');
+        textAlign(CENTER)
         textFont(pixelFont);
         textSize(36);
-        text('BUSTED!', 10, 50);
+        text('BUSTED!', (width / 2), 50);
         textSize(25);
-        text(`You stole ${s.lastScore} portfolios.`, 10, 50 + (textHeight * 1));
+        text(`You stole ${s.lastScore} portfolios.`, (width / 2), 50 + (textHeight * 1));
         textSize(25);
         let record = parseInt(localStorage.getItem("best")) || 0;
-        text(`Your best is ${record}.`, 10, 50 + (textHeight * 2));
+        text(`Your best is ${record}.`, (width / 2), 50 + (textHeight * 2));
+        social.style.top = `${50 + (textHeight * 3)}px`
+        social.style.display = "block";
+        social.querySelector(".tweet").href = `https://twitter.com/intent/tweet?url=https%3A%2F%2Fflappyguy.com&text=I helped Scott Morrison steal ${record} portfolios%21&hashtags=ScomoSnake`
+
+        // let a = createA('http://p5js.org/', 'this is a link');
+        // a.position((width / 2), 50 + (textHeight * 3));
+        // console.log(a)
     }
 
 }
@@ -143,7 +158,7 @@ function keyPressed() {
 
 
 function changeDirection(direction) {
-    navigator.vibrate(100);
+    navigator.vibrate(10);
     if (!s) {
         return;
     }

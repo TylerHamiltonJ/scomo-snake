@@ -1,12 +1,17 @@
+@font-face {
+  font-family: VCR;
+  src: url("./assets/VCR.ttf");
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 body {
   overscroll-behavior: contain;
-  overflow: hidden;
 }
 
 #game {
@@ -18,6 +23,25 @@ body {
 #controls {
   width: auto;
   margin: 0 auto;
+}
+
+#social {
+  position: absolute;
+  width: 200px;
+  display: block;
+  z-index: 99;
+  display: none;
+  left: 50%;
+  font-family: "VCR", 'Courier New', Courier, monospace;
+  text-align: center;
+  /* Negative half of height. */
+  margin-left: -100px;
+  /* Negative half of width. */
+}
+
+#social a,
+#social a:visited {
+  color: rgb(255, 0, 100);
 }
 
 .unselectable {

@@ -2,8 +2,8 @@
 
 //function to create snake object, with location and speed
 function Snake() {
-    this.x = Math.ceil(((width / 2) - scl) / gridSize) * gridSize;
-    this.y = Math.ceil(((height / 2) - scl * 2) / gridSize) * gridSize;
+    this.x = Math.ceil(((width / 2) - scl) / scl) * scl;
+    this.y = Math.ceil(((height / 2) - scl * 3) / scl) * scl;
     this.xspeed = 0;
     this.yspeed = 0;
     this.total = 0; //to track the lenght of snake. If the snakes eat the food, total should go up to 1. total++
@@ -16,8 +16,9 @@ function Snake() {
         //creates a distance variable to where the snake is in relation to where the food is
         var d = dist(this.x, this.y, pos.x, pos.y);
         //tells me wheter or not the snake reaches the food
-        if (d < scl) {
-            navigator.vibrate(10);
+        if (d < scl - 5) {
+            collectSFX.play();
+            navigator.vibrate(20);
             this.total += 1;
             this.lastPos = pos;
             this.eatText.push({ text: food.title, opacity: 1, x: this.x, y: this.y });
@@ -42,13 +43,15 @@ function Snake() {
                 this.die();
             }
         }
-        if (this.x >= width || this.y >= height || this.x < 0 || this.y < 0) {
+        if (this.x > width - scl || this.y > height - scl || this.x < 0 || this.y < 0) {
+            console.log(this.x, this.y)
             this.die();
         }
     }
 
     this.die = function () {
         gameState = "GAME_OVER"
+        navigator.vibrate(50);
         this.lastScore = this.total;
         const bestScore = Math.max(localStorage.getItem("best"), this.total);
         localStorage.setItem("best", bestScore)
@@ -56,8 +59,8 @@ function Snake() {
         this.tail = [];
         gameoverSFX.play();
 
-        this.x = Math.ceil(((width / 2) - scl) / gridSize) * gridSize;
-        this.y = Math.ceil(((height / 2) - scl * 2) / gridSize) * gridSize;
+        this.x = Math.ceil(((width / 2) - scl) / scl) * scl;
+        this.y = Math.ceil(((height / 2) - scl * 2) / scl) * scl;
         this.xspeed = 0;
         this.yspeed = 0;
 
