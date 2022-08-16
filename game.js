@@ -80,6 +80,7 @@ function draw() {
     background(51);
     noStroke();
     if (gameState === "START") {
+        pickLocation();
         const textHeight = 30;
         social.style.display = "none";
         const size = 50;

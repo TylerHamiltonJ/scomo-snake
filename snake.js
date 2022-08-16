@@ -43,7 +43,7 @@ function Snake() {
                 this.die();
             }
         }
-        if (this.x > width - scl || this.y > height - scl || this.x < 0 || this.y < 0) {
+        if (this.x > width - scl || this.y > height - scl || this.x < -5 || this.y < -5) {
             console.log(this.x, this.y)
             this.die();
         }

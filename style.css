@@ -39,6 +39,15 @@ body {
   /* Negative half of width. */
 }
 
+#social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#social li {
+  margin: 10px 0;
+}
+
 #social a,
 #social a:visited {
   color: rgb(255, 0, 100);
